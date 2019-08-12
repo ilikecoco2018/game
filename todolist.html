@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+        *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    body{
+        background: #cdcdcd;
+    }
+    .header{
+        width: auto;
+        height: 50px;
+        background: #323232;
+    }
+    .header h2{
+        width: 120px;
+        height: 100%;
+        color:#fff;
+        line-height: 50px;
+        background: #ff6700;
+        text-align: center;
+        float: left;
+    }
+    .con{
+        width: 600px;
+        height: 50px;
+        margin: 0 auto;
+    }
+    #input{
+        width: 360px;
+        height: 26px;
+        float: right;
+        border-radius: 5px;
+        margin-top: 12px;
+        outline: none;
+        text-indent: 1em;
+        /*缩进*/
+    }
+    .content{
+        width: 600px;
+        height: auto;
+        margin:0 auto;
+        /*background: red;*/
+    }
+    .content h2{
+        height: 32px;
+        padding:20px 0;
+        line-height: 32px;
+        /*background: green;*/
+    }
+    .content .num{
+        width: auto;
+        height: 20px;
+        float: right;
+        font-size: 16px;
+        text-align:center ;
+        line-height: 20px;
+        border-radius: 10px;
+        padding: 0 5px;
+        background: #fff;
+        margin-right: 5px;
+    }
+    .conbox{
+        width: auto;
+        height: auto;
+    }
+    .box{
+        width: auto;
+        height: 32px;
+        border-left:5px solid blue;
+        border-radius: 5px;
+        background: #fff;
+        margin:5px 10px 10px 0 ;
+
+    }
+    .conbox1 .box{
+        border-color: #323232;
+        opacity: 0.6;
+    }
+    .conbox1 .box .del{
+        border-color: #323232;
+    }
+    .conbox1.box .del::before{
+        background: #323232;
+    }
+    .box .input{
+        width: 22px;
+        height: 22px;
+        display: block;
+        margin-top: 6px;
+        float: left;
+        margin-left: 10px;
+    }
+    .box p{
+        width: 500px;
+        height: 32px;
+        /*background: blue;*/
+        float: left;
+        margin-left: 10px;
+        line-height: 32px;
+        font-size: 20px;
+        color:#ff6700;
+    }
+    .del{
+        width: 24px;
+        height: 22px;
+        border: 2px solid blue;
+        box-sizing: border-box;
+        float: right;
+        border-radius: 50%;
+        margin-top: 5px ;
+        margin-right: 10px;
+    }
+    .del::before{
+        content: "-";
+        width: 14px;
+        height: 12px;
+        background: blue;
+        display: block;
+        margin: 3px;
+        border-radius: 50%;
+        color:#fff;
+        text-align: center;
+        line-height: 12px;
+        font-weight: normal;
+    }
+</style>
+<body>
+    <div class="header">
+        <div class="con">
+            <h2>ToDoList</h2>
+            <input type="text" id="input" placeholder="添加ToDo">
+        </div>
+    </div>
+    <div class="content">
+        <h2>
+            正在进行
+            <div class="num" id="num1">100</div>
+        </h2>
+        <div class="conbox" id="con1">
+        </div>
+        <h2>
+            已经完成
+            <div class="num" id="num2">100</div>
+        </h2>
+        <div class="conbox conbox1" id="con2">
+        </div>
+    </div>
+</body>
+<script>
+
+</script>
+</html>
