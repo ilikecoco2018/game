@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="css/timTQ.css">
 </head>
 <style>
         *{
@@ -31,12 +32,12 @@
         float: left;
     }
     .con{
-        width: 600px;
+        max-width: 600px;
         height: 50px;
         margin: 0 auto;
     }
     #input{
-        width: 360px;
+        width: 60%;
         height: 26px;
         float: right;
         border-radius: 5px;
@@ -46,7 +47,7 @@
         /*缩进*/
     }
     .content{
-        width: 600px;
+        max-width: 600px;
         height: auto;
         margin:0 auto;
         /*background: red;*/
@@ -69,10 +70,6 @@
         background: #fff;
         margin-right: 5px;
     }
-    .conbox{
-        width: auto;
-        height: auto;
-    }
     .box{
         width: auto;
         height: 32px;
@@ -82,56 +79,46 @@
         margin:5px 10px 10px 0 ;
 
     }
-    .conbox1 .box{
-        border-color: #323232;
-        opacity: 0.6;
+    .lastSpan{
+        display: block;
+        width: 300px;
+        margin: 0 auto;
     }
-    .conbox1 .box .del{
-        border-color: #323232;
+    .conBoxSon,.conBoxSon1{
+        width: auto;
+        height: 32px;
+        background-color: #fff;
+        margin-bottom: 10px;
+        border-left: 5px solid #629a9c;
+        border-radius: 3px;
     }
-    .conbox1.box .del::before{
-        background: #323232;
+    .conBoxSon1{
+        border-left: 5px solid #999;
+        opacity: 0.5;
     }
-    .box .input{
+    .conBoxSon>input,.conBoxSon1>input{
         width: 22px;
         height: 22px;
+        cursor: pointer;
         display: block;
-        margin-top: 6px;
         float: left;
-        margin-left: 10px;
+        margin: 5px;
     }
-    .box p{
-        width: 500px;
+    .conBoxSon>p,.conBoxSon1>p{
+        width: 80%;
         height: 32px;
-        /*background: blue;*/
         float: left;
-        margin-left: 10px;
+        /*background-color: red;*/
         line-height: 32px;
-        font-size: 20px;
-        color:#ff6700;
+        text-indent: 1em;
     }
     .del{
-        width: 24px;
-        height: 22px;
-        border: 2px solid blue;
-        box-sizing: border-box;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: plum;
         float: right;
-        border-radius: 50%;
-        margin-top: 5px ;
-        margin-right: 10px;
-    }
-    .del::before{
-        content: "-";
-        width: 14px;
-        height: 12px;
-        background: blue;
-        display: block;
-        margin: 3px;
-        border-radius: 50%;
-        color:#fff;
-        text-align: center;
-        line-height: 12px;
-        font-weight: normal;
+        margin: 6px;
     }
 </style>
 <body>
@@ -144,19 +131,129 @@
     <div class="content">
         <h2>
             正在进行
-            <div class="num" id="num1">100</div>
+            <div class="num" id="num1">0</div>
         </h2>
         <div class="conbox" id="con1">
+
         </div>
         <h2>
             已经完成
-            <div class="num" id="num2">100</div>
+            <div class="num" id="num2">0</div>
         </h2>
         <div class="conbox conbox1" id="con2">
+
         </div>
     </div>
+    <div class="bBox" style="opacity: 0"></div>
+    <span class="lastSpan">Copyright © 2019 todolist.cn clear</span>
 </body>
 <script>
+    let inputEle = document.querySelector("#input");
+    let con1 = document.querySelector("#con1");
+    let con2 = document.querySelector("#con2");
+
+    let num1 = document.querySelector("#num1");//正在进行数字
+    let num2 = document.querySelector("#num2");//已经完成数字
+
+    let doing =  localStorage.doing?localStorage.doing.split(","):[];
+    let haveDo = localStorage.haveDo?localStorage.haveDo.split(","):[];
+
+    render();
+    inputEle.onkeydown = function (event) {
+        if (event.keyCode == 13 && this.value!=""){
+            doing.unshift(this.value);//给数组添加内容
+            localStorage.doing = doing;
+            localStorage.haveDo = haveDo;
+            render();
+            this.value = "";//清空input的内容
+        }
+    };
+
+    function render() {//渲染
+        let str = "";//给上面添加内容
+        doing.forEach((item,index)=>{
+            str += `<div class="conBoxSon">
+                <input type="checkbox" class="change">
+                <p>${item}</p>
+                <div class="del"></div>
+            </div>`;
+        });
+        con1.innerHTML = str;
+        num1.innerHTML = doing.length;
+
+        let str2 = "";//给下面添加内容
+        haveDo.forEach((item,index)=>{
+            str2 += `<div class="conBoxSon1">
+                <input type="checkbox" checked class="chang">
+                <p>${item}</p>
+                <div class="del"></div>
+            </div>`;
+        });
+        con2.innerHTML = str2;
+        num2.innerHTML = haveDo.length;
+    }
+    con1.onclick = function (event) {
+        let tar = event.target;//元素委派
+        if (tar.className=="change") {//如果点击的是class名是change的话就执行下面的
+            let value = tar.nextElementSibling.innerText;//tar是input，它的下一个兄弟元素节点是p
+            let index = doing.indexOf(value);//找元素value的下标
+            haveDo.unshift(doing.splice(index,1)[0]);//splice从下标为index的元素往后删除一位
+            render();
+            localStorage.doing = doing;
+            localStorage.haveDo = haveDo;
+        }
+        else if (tar.className=="del"){
+            let value = tar.previousElementSibling.innerText;//tar是删除按钮，它的上一个兄弟元素节点是p
+            let index = doing.indexOf(value);//找元素value的下标
+            doing.splice(index,1)[0];
+            render();
+            localStorage.doing = doing;
+            localStorage.haveDo = haveDo;
+        }
+    };
+    con2.onclick = function (event) {
+        let tar = event.target;//元素委派
+        if (tar.className=="chang") {//如果点击的是class名是change的话就执行下面的
+            let value = tar.nextElementSibling.innerText;//不太理解
+            let index = haveDo.indexOf(value);//找元素value的下标
+            doing.unshift(haveDo.splice(index,1)[0]);//splice从下标为index的元素往后删除一位
+            render();
+            localStorage.doing = doing;
+            localStorage.haveDo = haveDo;
+        }else if (tar.className=="del"){
+            let value = tar.previousElementSibling.innerText;//不太理解
+            let index = haveDo.indexOf(value);//找元素value的下标
+            haveDo.splice(index,1)[0];
+            render();
+            localStorage.doing = doing;
+            localStorage.haveDo = haveDo;
+        }
+    };
+    con1.ondblclick = function (event) {
+        let tar = event.target;
+        if (tar.nodeName == "P" && tar.className!="del" && tar.className!="chang") {
+            ch(tar);
+        }
+    };
+    con2.ondblclick = function (event) {
+        let tar = event.target;
+        if (tar.nodeName == "P" && tar.className!="del" && tar.className!="chang") {
+            ch(tar);
+        }
+    };
+     function ch(item) {
+            let old = item.innerText;
+            let input = document.createElement("input");
+            item.innerText="";
+            input.value =old;
+            input.onblur = function(){
+              item.innerText = this.value;
+              // doing.push(input.value);
+            };
+            item.appendChild(input);
+            input.focus();
+        }
+
 
 </script>
 </html>
