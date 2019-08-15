@@ -75,4 +75,128 @@ header{
     font-size: 1rem;
     line-height: 0.9rem;
     color: white;
+    padding-left: 0.3rem;
 }
+.headerBottomCenter{
+    width: 0.9rem;
+    height: 0.5rem;
+    margin: 0.15rem auto 0;
+    text-align: center;
+    font-size: 0.4rem;
+    line-height: 0.5rem;
+    color: white;
+}
+.headerBottomSd{
+     width: 2rem;
+    height: 0.5rem;
+    margin: 0 auto 0;
+    text-align: center;
+    font-size: 0.28rem;
+    line-height: 0.5rem;
+    color: white;
+}
+.headerBottomLast{
+    width: 5rem;
+    height: 0.5rem;
+    margin: 1rem auto 0;
+    text-align: center;
+    font-size: 0.28rem;
+    line-height: 0.5rem;
+    color: white;
+}
+main{
+    background-color:#f0f0f0;
+}
+.main1{
+    width: 100%;
+    height: 1.52rem;
+    background-color:#fff;
+    border-bottom: 0.02rem solid  #e4e4e4;
+    margin-bottom: 0.2rem;
+    padding-top: 0.5rem;
+}
+.main1Left{
+    width: 50%;
+    height: 1rem;
+    border-right: 1px solid #e4e4e4;
+    box-sizing: border-box;
+    float: left;
+}
+.main1Right{
+    width: 50%;
+    height: 1rem;
+    float: left;
+}
+.main1LeftTop,.main1LeftTop1{
+    width: auto;
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.3rem;
+}
+.main1LeftTop span{
+    display: block;
+    width: 1.5rem;
+    height: 100%;
+    text-align: right;
+}
+.main1LeftTop span:first-child{
+    text-align: left;
+    padding-left: 0.4rem;
+    width: 1.2rem;
+}
+.main1LeftTop:last-child{
+    margin-top: 0.15rem;
+}
+.main1LeftTop1 span{
+    display: block;
+    width: 1.5rem;
+    height: 100%;
+    text-align: left;
+    padding-left: 0.05rem;
+}
+.main1LeftTop1 span:last-child{
+    text-align: right;
+    padding-right: 0.4rem;
+    width: 1.2rem;
+}
+.main1LeftTop1:last-child{
+    margin-top: 0.15rem;
+}
+.main2{
+    height: 2rem;
+    background-color:#fff;
+    border-bottom: 0.02rem solid  #e4e4e4;
+    margin-bottom: 0.3rem;
+    padding-top: 0.5rem;
+}
+.main2 li{
+    width: 1.2rem;
+    height: 1.6rem;
+    /*background-color: black;*/
+}
+.main2 span{
+    display: block;
+    width: 100%;
+    height: 0.4rem;
+    text-align: center;
+    font-size: 0.3rem;
+}
+.main2 span:last-child{
+    padding-left: 0.1rem;
+}
+.main2 i{
+    display: block;
+    height: 0.8rem;
+    width: 100%;
+    text-align: center;
+    line-height: 0.8rem;
+}
+.main3{
+    height: 7rem;
+    background-color:#fff;
+    border-bottom: 0.02rem solid  #e4e4e4;
+    margin-bottom: 0.3rem;
+    padding-top: 0.5rem;
+}
+
+

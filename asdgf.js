@@ -2,13 +2,11 @@
 window.onload = function ( ) {
 
     class Game {
-        constructor(screenClassName,pauseButton,key,lifeValue,integralValue) {
+        constructor(screenClassName,pauseButton,key) {
             this.screen = document.querySelector(screenClassName);
             this.pauseButton = document.querySelector(pauseButton);
             this.keyEle = document.querySelector(key);
             this.letters = [];
-            this.lifeValue = document.querySelector(lifeValue);
-            this.integralValue = document.querySelector(integralValue)
         }
 
         makeWord(num=5) {
@@ -87,10 +85,6 @@ window.onload = function ( ) {
                         this.screen.removeChild(item.node);
                         this.letters.splice(index,1);
                         this.makeWord(1);
-                        this.lifeValue.innerText-=5;
-                        if (this.lifeValue.innerText==0){
-                            clearInterval(this.t);
-                        }
                     }
                 })
             },500)
@@ -130,12 +124,6 @@ window.onload = function ( ) {
                         game.screen.removeChild(game.letters[index].node);
                         game.letters.splice(index,1);
                         game.makeWord(1);
-                        let num = parseInt(game.integralValue.innerText);
-                        num+=5;
-                        game.integralValue.innerText = num;
-                        if (num == 200){
-                            clearInterval(game.t);
-                        }
                     }
                 }
             }
@@ -143,7 +131,7 @@ window.onload = function ( ) {
     }
 
 
-    let game = new Game(".wordBox",".pauseButton",".keyBoard",".lifeValue span",".integralValue span");
+    let game = new Game(".wordBox",".pauseButton",".keyBoard");
     game.makeWord();
     game.run();
     game.pauseButtonFF();

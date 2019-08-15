@@ -35,17 +35,21 @@
     width: 100%;
 }
 .wordBox{
-    width: 5rem;
-    height: 7rem;
+    width: 6rem;
+    height: 6.5rem;
     overflow: hidden;
     position: absolute;
-    top:0.5rem;
+    top:1.2rem;
     left:0;
     right:0;
     margin-left: auto;
     margin-right: auto;
 }
-.wordBox div{
+.letter {
+    width: 0.6rem;
+    height: 0.8rem;
+    /*background-color: red;*/
+    background-size: cover!important;
     position: absolute;
 }
 .lifeValue{
@@ -104,11 +108,6 @@
     display: block;
     width:100%;
 }
-/*.rabbit{*/
-    /*width: 0.45rem;*/
-    /*height: 0.7rem;*/
-    /*position: absolute;*/
-/*}*/
 /*top结束*/
 .alert{
     width: 100%;
