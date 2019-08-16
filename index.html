@@ -5,75 +5,255 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>打字游戏</title>
-    <script src="js/rem.js"></script>
-    <script src="js/animate.js"></script>
-    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
 </head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    body{
+        background: #cdcdcd;
+    }
+    .header{
+        width: auto;
+        height: 50px;
+        background: #323232;
+    }
+    .header h2{
+        width: 120px;
+        height: 100%;
+        color:#fff;
+        line-height: 50px;
+        /*background: #ff6700;*/
+        text-align: center;
+        float: left;
+    }
+    .con{
+        width: 600px;
+        height: 50px;
+        margin: 0 auto;
+    }
+    #input{
+        width: 360px;
+        height: 26px;
+        float: right;
+        border-radius: 5px;
+        margin-top: 12px;
+        outline: none;
+        text-indent: 1em;
+        /*缩进*/
+    }
+    .content{
+        width: 600px;
+        height: auto;
+        margin:0 auto;
+        /*background: red;*/
+    }
+    .content h2{
+        height: 32px;
+        padding:20px 0;
+        line-height: 32px;
+        /*background: green;*/
+    }
+    .content .num{
+        width: auto;
+        height: 20px;
+        float: right;
+        font-size: 16px;
+        text-align:center ;
+        line-height: 20px;
+        border-radius: 10px;
+        padding: 0 5px;
+        background: #fff;
+        margin-right: 5px;
+    }
+    .conbox{
+        width: auto;
+        height: auto;
+    }
+    .box{
+        width: auto;
+        height: 32px;
+        border-left:5px solid #629a9c;
+        border-radius: 5px;
+        background: #fff;
+        margin:5px 10px 10px 0 ;
+
+    }
+    .conbox1 .box{
+        border-color: #323232;
+        opacity: 0.6;
+    }
+    .conbox1 .box .del{
+        border-color: #323232;
+    }
+    .conbox1.box .del::before{
+        background: #323232;
+    }
+    .box .input{
+        width: 22px;
+        height: 22px;
+        display: block;
+        margin-top: 6px;
+        float: left;
+        margin-left: 10px;
+    }
+    .box p{
+        width: 500px;
+        height: 32px;
+        /*background: blue;*/
+        float: left;
+        margin-left: 10px;
+        line-height: 32px;
+        font-size: 20px;
+        color:black;
+    }
+    .del{
+        width: 22px;
+        height: 22px;
+        background-color: pink;
+        box-sizing: border-box;
+        float: right;
+        border-radius: 50%;
+        margin-top: 5px ;
+        margin-right: 10px;
+    }
+</style>
 <body>
-<div class="outSide">
-    <div class="Top">
-        <div class="voice"><img src="img/Aplay.png" imgscr="img/Apause.png" alt=""></div>
-<!--        喇叭-->
-        <div class="wordBox">
-
+    <div class="header">
+        <div class="con">
+            <h2>ToDoList</h2>
+            <input type="text" id="input" placeholder="添加ToDo">
         </div>
-<!--        字幕出现的区域-->
-        <div class="lifeValue"><span>100</span></div>
-<!--        生命值-->
-        <div class="integralValue"><span>0</span></div>
-<!--        积分值-->
-        <div class="pauseButton" ><img id="flag" src="img/Pause.png" imgsrc="img/Play.png" alt=""></div>
-<!--        开关-->
     </div>
-
-    <div class="Bottom">
-            <div class="keyBoard">
-                <ul>
-                    <li><span>Q</span></li>
-                    <li><span>W</span></li>
-                    <li><span>E</span></li>
-                    <li><span>R</span></li>
-                    <li><span>T</span></li>
-                    <li><span>Y</span></li>
-                    <li><span>U</span></li>
-                    <li><span>I</span></li>
-                    <li><span>O</span></li>
-                    <li><span>P</span></li>
-                </ul>
-                <ul>
-                    <li><span>A</span></li>
-                    <li><span>S</span></li>
-                    <li><span>D</span></li>
-                    <li><span>F</span></li>
-                    <li><span>G</span></li>
-                    <li><span>H</span></li>
-                    <li><span>J</span></li>
-                    <li><span>K</span></li>
-                    <li><span>L</span></li>
-                </ul>
-                <ul>
-                    <li><span>Z</span></li>
-                    <li><span>X</span></li>
-                    <li><span>C</span></li>
-                    <li><span>V</span></li>
-                    <li><span>B</span></li>
-                    <li><span>N</span></li>
-                    <li><span>M</span></li>
-                </ul>
-            </div>
+    <div class="content">
+        <h2>
+            正在进行
+            <div class="num" id="num1">100</div>
+        </h2>
+        <div class="conbox" id="con1">
+        </div>
+        <h2>
+            已经完成
+            <div class="num" id="num2">100</div>
+        </h2>
+        <div class="conbox conbox1" id="con2">
+        </div>
     </div>
-</div>
-
-
-<div class="alert">
-    <div class="yun"></div>
-    <div class="overPlay">
-        <span>50</span>
-        <div class="btn"></div>
-    </div>
-</div>
-
 </body>
-    <script src="js/index.js"></script>
 </html>
+<script>
+window.onload=function () {
+
+    let arr1,arr2;
+    arr1=localStorage.arr1?localStorage.arr1.split(","):[];
+    arr2=localStorage.arr2?localStorage.arr2.split(","):[];
+
+
+    let con1=document.getElementById("con1");
+    let con2=document.getElementById("con2");
+    let input1=document.getElementById("input");
+    let num1=document.getElementById("num1");
+    let num2=document.getElementById("num2");
+
+    Update();
+
+    function Update() {
+        localStorage.arr1=arr1.join(",");
+        localStorage.arr2=arr2.join(",");
+        con1.innerHTML="";
+        con2.innerHTML="";
+        num1.innerHTML=arr1.length;
+        num2.innerHTML=arr2.length;
+        arr1.forEach((v,i)=>{
+            let box=document.createElement("div");
+            box.className="box";
+            // let str=`<input type='checkbox'><p>${v}</p><div class='del'></div>`;
+            let input=document.createElement("input");
+            input.className="input";
+            input.setAttribute("type","checkbox");
+            input.onclick=function () {
+                arr1.splice(i,1);
+                arr2.unshift(v);
+                Update();
+            };
+            let p=document.createElement("p");
+            p.innerText=v;
+            p.ondblclick=function () {
+              let input=document.createElement("input");
+              let text=p.innerText;
+              p.innerText="";
+              input.value=text;
+              input.onblur=function () {
+                  arr1.splice(i,1,input.value);
+                  Update();
+              };
+              p.appendChild(input);
+              input.focus();
+            };
+            let del=document.createElement("div");
+            del.className="del";
+            del.onclick=function () {
+                arr1.splice(i,1)
+                Update();
+            };
+            box.appendChild(input);
+            box.appendChild(p);
+            box.appendChild(del);
+            con1.appendChild(box);
+        });
+        arr2.forEach((v,i)=>{
+            let box=document.createElement("div");
+            box.className="box";
+            // let str=`<input type='checkbox' checked="checked"><p>${v}</p><div class='del'></div>`;
+            let input=document.createElement("input");
+            input.className="input";
+            input.setAttribute("type","checkbox");
+            input.setAttribute("checked","checked");
+            input.onclick=function () {
+                arr2.splice(i,1);
+                arr1.push(v);
+                Update();
+            };
+            let p=document.createElement("p");
+            p.innerText=v;
+            p.ondblclick=function () {
+                let input=document.createElement("input");
+                let text=p.innerText;
+                p.innerText="";
+                input.value=text;
+                input.onblur=function () {
+                    arr2.splice(i,1,input.value);
+                    Update();
+                };
+                p.appendChild(input);
+                input.focus();
+            };
+            let del=document.createElement("div");
+            del.className="del";
+            del.onclick=function () {
+                arr2.splice(i,1);
+                Update();
+            };
+            box.appendChild(input);
+            box.appendChild(p);
+            box.appendChild(del);
+            con2.appendChild(box);
+        });
+        input1.onkeydown=function(e){
+            if(e.keyCode==13&&this.value!=""){
+                console.log(this.value);
+                arr1.unshift(this.value);
+                this.value="";
+                Update();
+            }
+        }
+    }
+
+
+
+
+}
+</script>
